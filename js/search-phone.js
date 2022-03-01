@@ -63,7 +63,14 @@ const addDetails = (product) => {
                             <h3 class="card-text">Name: ${product.name}</h3>
                             <p class="card-text fs-6 mb-1 text-black-50"><span class="fw-bold">Release Date: </span>${product.releaseDate ? product.releaseDate : 'No release date found'}</p>
                             <p class="card-text fs-6 mb-1 pos-ab">${product.brand}</p>
-                       
+                        <!-- Main features -->
+                            <h5 class="text-success my-2">Main features:</h5>
+                            <p class="card-text fs-6 mb-1"><span class="fw-bold">Storage: </span>${product.mainFeatures.storage}</p>
+                            <p class="card-text fs-6 mb-1"><span class="fw-bold">Display Size: </span>${product.mainFeatures.displaySize}</p>
+                            <p class="card-text fs-6 mb-1"><span class="fw-bold">Chip Set: </span>${product.mainFeatures.chipSet}</p>
+                            <p class="card-text fs-6 mb-1"><span class="fw-bold">Memory: </span>${product.mainFeatures.memory}</p>
+                            <p class="card-text fs-6 mb-1"><span class="fw-bold">Sensors: </span>${product.mainFeatures.sensors}</p>
+                        
     </div>`;
     signalProduct.appendChild(div);
 };
