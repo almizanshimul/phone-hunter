@@ -52,12 +52,12 @@ const addDetails = (product) => {
     signalProduct.style.display = 'block';
     signalProduct.textContent = '';
     const div = document.createElement('div');
-    div.classList.add('card', 'mx-auto', 'border-0', 'shadow')
+    div.classList.add('card', 'mx-auto', 'border-0', 'shadow', 'pos-rel')
     div.innerHTML = `<div class="row g-4 my-4">
                         <div class="col-4 text-center">
                             <img src="${product.image}" class="w-75 mx-auto my-4 alt="...">
                         </div>
-                        <div class="col-8 pos-rel">
+                        <div class="col-8">
                         <!-- Product Details -->
                             <h2 class="text-primary">Product Details:</h2>
                             <h3 class="card-text">Name: ${product.name}</h3>
@@ -70,7 +70,15 @@ const addDetails = (product) => {
                             <p class="card-text fs-6 mb-1"><span class="fw-bold">Chip Set: </span>${product.mainFeatures.chipSet}</p>
                             <p class="card-text fs-6 mb-1"><span class="fw-bold">Memory: </span>${product.mainFeatures.memory}</p>
                             <p class="card-text fs-6 mb-1"><span class="fw-bold">Sensors: </span>${product.mainFeatures.sensors}</p>
-                        
+                        <!-- Other Details -->
+                            <h5 class="text-success my-2">Other Details:</h5>
+                            <p class="card-text fs-6 mb-1"><span class="fw-bold">WLAN: </span>${product.others.WLAN}</p>
+                            <p class="card-text fs-6 mb-1"><span class="fw-bold">Bluetooth: </span>${product.others.Bluetooth}</p>
+                            <p class="card-text fs-6 mb-1"><span class="fw-bold">GPS: </span>${product.others.GPS}</p>
+                            <p class="card-text fs-6 mb-1"><span class="fw-bold">NFC: </span>${product.others.NFC}</p>
+                            <p class="card-text fs-6 mb-1"><span class="fw-bold">Radio: </span>${product.others.Radio}</p>
+                            <p class="card-text fs-6 mb-1"><span class="fw-bold">USB: </span>${product.others.USB}</p>
+                        </div>
     </div>`;
     signalProduct.appendChild(div);
 };
