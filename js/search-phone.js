@@ -1,7 +1,11 @@
-// Find All Phone 
+/* ----------------
+Find All Phone
+----------------- */
 const searchPhone = () => {
     const searchField = document.getElementById('search-field')
     const searchText = searchField.value;
+    const addValue = document.getElementById('search-value')
+    addValue.innerText = searchText;
     searchField.value = '';
 
     if (searchText == '') {
@@ -19,9 +23,11 @@ const searchPhone = () => {
     }
 
 };
-const showAllProducts = () => {
-    document.getElementById('show-all-product').style.display = 'none';
-}
+
+/* ------------------------
+Add product to display 
+---------------------------- */
+
 const displayRsult = phones => {
     if (!phones.length) {
         alert('Please enter a Valid Phone Name')
@@ -41,17 +47,27 @@ const displayRsult = phones => {
                          </div>
                          `;
             resultRow.appendChild(div);
-            document.getElementById('show-all-product').style.display = 'inline-block';
 
         });
 
     }
     document.getElementById('signal-product').style.display = 'none';
     document.getElementById('spinner').style.display = 'none';
+    /* 
+    Show all button hide and show
+     */
+    if (phones.length > 20) {
+        document.getElementById('show-all-product').style.display = 'none';
+    } else {
+        document.getElementById('show-all-product').style.display = 'inline-block';
+    }
+
 
 };
 
-// Signal Phone details 
+/* -----------------------
+Signal Phone details
+-------------------------- */
 
 const loadMoreDetails = details => {
     const url = `https://openapi.programming-hero.com/api/phone/${details}`;
@@ -62,6 +78,7 @@ const loadMoreDetails = details => {
 
 const addDetails = (product) => {
     const signalProduct = document.getElementById('signal-product');
+    console.log(product);
     signalProduct.style.display = 'block';
     signalProduct.textContent = '';
     const div = document.createElement('div');
@@ -86,20 +103,38 @@ const addDetails = (product) => {
                             <p class="card-text fs-6 mb-1"><span class="fw-bold">Sensors: </span>${product.mainFeatures.sensors}</p>
                         <!-- Other Details -->
                             <h5 class="text-success my-2">Other Details:</h5>
-                            <p class="card-text fs-6 mb-1"><span class="fw-bold">WLAN: </span>${product.others.WLAN}</p>
-                            <p class="card-text fs-6 mb-1"><span class="fw-bold">Bluetooth: </span>${product.others.Bluetooth}</p>
-                            <p class="card-text fs-6 mb-1"><span class="fw-bold">GPS: </span>${product.others.GPS}</p>
-                            <p class="card-text fs-6 mb-1"><span class="fw-bold">NFC: </span>${product.others.NFC}</p>
-                            <p class="card-text fs-6 mb-1"><span class="fw-bold">Radio: </span>${product.others.Radio}</p>
-                            <p class="card-text fs-6 mb-1"><span class="fw-bold">USB: </span>${product.others.USB}</p>
+                            <p class="card-text fs-6 mb-1"><span class="fw-bold">WLAN: </span>${product.others.WLAN ? product.others.WLAN : 'No'}</p>
+                            <p class="card-text fs-6 mb-1"><span class="fw-bold">Bluetooth: </span>${product.others.Bluetooth ? product.others.Bluetooth : 'No'}</p>
+                            <p class="card-text fs-6 mb-1"><span class="fw-bold">GPS: </span>${product.others.GPS ? product.others.GPS : 'No'}</p>
+                            <p class="card-text fs-6 mb-1"><span class="fw-bold">NFC: </span>${product.others.NFC ? product.others.NFC : 'No'}</p>
+                            <p class="card-text fs-6 mb-1"><span class="fw-bold">Radio: </span>${product.others.Radio ? product.others.Radio : 'No'}</p>
+                            <p class="card-text fs-6 mb-1"><span class="fw-bold">USB: </span>${product.others.USB ? product.others.USB : 'No'}</p>
                         </div>
     </div>
     `;
     signalProduct.appendChild(div);
 };
 
-// signal Product Details Close butto add 
+/* ------------------------------------
+signal Product Details Close button add
+------------------------------------------  */
 const detailsClose = () => {
     document.getElementById('signal-product').style.display = 'none';
 
+}
+
+/* -------------------------
+Show all Product
+------------------------ */
+const showAllPhone = () => {
+    const searchText = document.getElementById('search-value').innerText;
+    // fetch data 
+    const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayRsult(data.data));
+};
+// Call show all button 
+const showAllProducts = () => {
+    showAllPhone();
 }
