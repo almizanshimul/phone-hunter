@@ -47,22 +47,17 @@ const displayRsult = phones => {
                          </div>
                          `;
             resultRow.appendChild(div);
-
         });
+        // Show all button hide and show
 
+        if (phones.length > 20) {
+            document.getElementById('show-all-product').style.display = 'none';
+        } else {
+            document.getElementById('show-all-product').style.display = 'inline-block';
+        }
     }
     document.getElementById('signal-product').style.display = 'none';
     document.getElementById('spinner').style.display = 'none';
-    /* 
-    Show all button hide and show
-     */
-    if (phones.length > 20) {
-        document.getElementById('show-all-product').style.display = 'none';
-    } else {
-        document.getElementById('show-all-product').style.display = 'inline-block';
-    }
-
-
 };
 
 /* -----------------------
