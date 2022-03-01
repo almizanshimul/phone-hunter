@@ -63,6 +63,7 @@ const addDetails = (product) => {
                             <h3 class="card-text">Name: ${product.name}</h3>
                             <p class="card-text fs-6 mb-1 text-black-50"><span class="fw-bold">Release Date: </span>${product.releaseDate ? product.releaseDate : 'No release date found'}</p>
                             <p class="card-text fs-6 mb-1 pos-ab">${product.brand}</p>
+                            <img src='https://www.freeiconspng.com/thumbs/close-button-png/black-circle-close-button-png-5.png' class='details-close' onclick='detailsClose()'>
                         <!-- Main features -->
                             <h5 class="text-success my-2">Main features:</h5>
                             <p class="card-text fs-6 mb-1"><span class="fw-bold">Storage: </span>${product.mainFeatures.storage}</p>
@@ -82,3 +83,9 @@ const addDetails = (product) => {
     </div>`;
     signalProduct.appendChild(div);
 };
+
+// signal Product Details Close butto add 
+const detailsClose = () => {
+    document.getElementById('signal-product').style.display = 'none';
+
+}

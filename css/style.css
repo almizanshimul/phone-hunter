@@ -5,10 +5,12 @@
 .card:hover {
     box-shadow: 0 .5rem 1.1rem 0.3rem rgba(0, 0, 0, .25) !important;
 }
-.pos-rel{
+
+.pos-rel {
     position: relative;
 }
-.pos-ab{
+
+.pos-ab {
     position: absolute;
     top: 50px;
     right: 50px;
@@ -16,4 +18,12 @@
     color: white;
     padding: 7px 25px;
     border-radius: 26px;
+}
+
+.details-close {
+    position: absolute;
+    top: 17px;
+    right: 25px;
+    width: 25px;
+    cursor: pointer;
 }
