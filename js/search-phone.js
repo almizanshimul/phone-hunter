@@ -66,11 +66,11 @@ const addDetails = (product) => {
     signalProduct.textContent = '';
     const div = document.createElement('div');
     div.classList.add('card', 'mx-auto', 'border-0', 'shadow', 'pos-rel')
-    div.innerHTML = `<div class="row g-4 my-4">
-                        <div class="col-4 text-center">
+    div.innerHTML = `<div class="row g-4 my-4  p-3">
+                        <div class="col-lg-4 col-12 text-center">
                             <img src="${product.image}" class="w-75 mx-auto my-4 alt="...">
                         </div>
-                        <div class="col-8">
+                        <div class="col-lg-8 col-12">
                         <!-- Product Details -->
                             <h2 class="text-primary">Product Details:</h2>
                             <h3 class="card-text">Name: ${product.name}</h3>
