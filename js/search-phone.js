@@ -20,7 +20,6 @@ const displayRsult = phones => {
     const resultRow = document.getElementById('search-result')
     resultRow.textContent = '';
     phones.forEach(phone => {
-        // console.log(phones.length);
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = ` <div class="card border-0 shadow">
@@ -38,7 +37,6 @@ const displayRsult = phones => {
 
 // Signal Phone details 
 
-
 const loadMoreDetails = details => {
     const url = `https://openapi.programming-hero.com/api/phone/${details}`;
     fetch(url)
@@ -47,7 +45,6 @@ const loadMoreDetails = details => {
 }
 
 const addDetails = (product) => {
-    console.log(product);
     const signalProduct = document.getElementById('signal-product');
     signalProduct.style.display = 'block';
     signalProduct.textContent = '';
