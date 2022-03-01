@@ -12,21 +12,20 @@ const searchPhone = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => displayRsult(data.data.slice(0, 20)));
-        // let sliced = data.data.slice(0, 20)
-        // displayData(sliced);
 
         document.getElementById('spinner').style.display = 'block';
         document.getElementById('search-result').textContent = '';
+
     }
 
 };
-
+const showAllProducts = () => {
+    document.getElementById('show-all-product').style.display = 'none';
+}
 const displayRsult = phones => {
     if (!phones.length) {
         alert('Please enter a Valid Phone Name')
     } else {
-
-
         const resultRow = document.getElementById('search-result')
         resultRow.textContent = '';
         phones.forEach(phone => {
@@ -39,9 +38,13 @@ const displayRsult = phones => {
                                 <h5 class="card-title">${phone.phone_name}</h5>
                                 <button class="btn btn-primary text-white my-3" type="button" id="btn-details" onclick="loadMoreDetails('${phone.slug}')">More details</button>
                             </div>
-                         </div>`;
+                         </div>
+                         `;
             resultRow.appendChild(div);
+            document.getElementById('show-all-product').style.display = 'inline-block';
+
         });
+
     }
     document.getElementById('signal-product').style.display = 'none';
     document.getElementById('spinner').style.display = 'none';
@@ -90,7 +93,8 @@ const addDetails = (product) => {
                             <p class="card-text fs-6 mb-1"><span class="fw-bold">Radio: </span>${product.others.Radio}</p>
                             <p class="card-text fs-6 mb-1"><span class="fw-bold">USB: </span>${product.others.USB}</p>
                         </div>
-    </div>`;
+    </div>
+    `;
     signalProduct.appendChild(div);
 };
 

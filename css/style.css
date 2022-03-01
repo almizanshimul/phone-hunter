@@ -32,3 +32,8 @@
     display: none;
     width: 200px;
 }
+
+/* Show all Product   */
+#show-all-product{
+    display: none;
+}
