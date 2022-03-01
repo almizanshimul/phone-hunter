@@ -11,18 +11,28 @@ const searchPhone = () => {
         const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
         fetch(url)
             .then(res => res.json())
-            .then(data => displayRsult(data.data))
+            .then(data => displayRsult(data.data.slice(0, 20)));
+        // let sliced = data.data.slice(0, 20)
+        // displayData(sliced);
+
+        document.getElementById('spinner').style.display = 'block';
+        document.getElementById('search-result').textContent = '';
     }
 
-}
+};
 
 const displayRsult = phones => {
-    const resultRow = document.getElementById('search-result')
-    resultRow.textContent = '';
-    phones.forEach(phone => {
-        const div = document.createElement('div');
-        div.classList.add('col');
-        div.innerHTML = ` <div class="card border-0 shadow">
+    if (!phones.length) {
+        alert('Please enter a Valid Phone Name')
+    } else {
+
+
+        const resultRow = document.getElementById('search-result')
+        resultRow.textContent = '';
+        phones.forEach(phone => {
+            const div = document.createElement('div');
+            div.classList.add('col');
+            div.innerHTML = ` <div class="card border-0 shadow">
                             <img src="${phone.image}" class="w-50 mx-auto my-4" alt="...">
                             <div class="card-body text-center">
                                 <h6 class="card-title">${phone.brand}</h6>
@@ -30,9 +40,12 @@ const displayRsult = phones => {
                                 <button class="btn btn-primary text-white my-3" type="button" id="btn-details" onclick="loadMoreDetails('${phone.slug}')">More details</button>
                             </div>
                          </div>`;
-        resultRow.appendChild(div);
-        document.getElementById('signal-product').style.display = 'none';
-    });
+            resultRow.appendChild(div);
+        });
+    }
+    document.getElementById('signal-product').style.display = 'none';
+    document.getElementById('spinner').style.display = 'none';
+
 };
 
 // Signal Phone details 
@@ -60,7 +73,7 @@ const addDetails = (product) => {
                             <h3 class="card-text">Name: ${product.name}</h3>
                             <p class="card-text fs-6 mb-1 text-black-50"><span class="fw-bold">Release Date: </span>${product.releaseDate ? product.releaseDate : 'No release date found'}</p>
                             <p class="card-text fs-6 mb-1 pos-ab">${product.brand}</p>
-                            <img src='https://www.freeiconspng.com/thumbs/close-button-png/black-circle-close-button-png-5.png' class='details-close' onclick='detailsClose()'>
+                            <img src='./img/close.png' class='details-close' onclick='detailsClose()'>
                         <!-- Main features -->
                             <h5 class="text-success my-2">Main features:</h5>
                             <p class="card-text fs-6 mb-1"><span class="fw-bold">Storage: </span>${product.mainFeatures.storage}</p>
