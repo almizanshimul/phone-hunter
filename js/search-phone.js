@@ -42,20 +42,20 @@ const displayRsult = phones => {
                             <div class="card-body text-center">
                                 <h6 class="card-title">${phone.brand}</h6>
                                 <h5 class="card-title">${phone.phone_name}</h5>
-                                <button class="btn btn-primary text-white my-3" type="button" id="btn-details" onclick="loadMoreDetails('${phone.slug}')">More details</button>
+                                <button class="btn btn-primary my-3" type="button" id="btn-details" onclick="loadMoreDetails('${phone.slug}')"><a href='#signal-product' class="text-white text-decoration-none">More details</a></button>
                             </div>
                          </div>
                          `;
             resultRow.appendChild(div);
         });
-        // Show all button hide and show
+        // Show all phone hide and show
 
         if (phones.length > 20) {
             document.getElementById('show-all-product').style.display = 'none';
         } else {
             document.getElementById('show-all-product').style.display = 'inline-block';
-        }
-    }
+        };
+    };
     document.getElementById('signal-product').style.display = 'none';
     document.getElementById('spinner').style.display = 'none';
 };
@@ -68,7 +68,7 @@ const loadMoreDetails = details => {
     const url = `https://openapi.programming-hero.com/api/phone/${details}`;
     fetch(url)
         .then(res => res.json())
-        .then(data => addDetails(data.data))
+        .then(data => addDetails(data.data));
 }
 
 const addDetails = (product) => {
@@ -98,12 +98,12 @@ const addDetails = (product) => {
                             <p class="card-text fs-6 mb-1"><span class="fw-bold">Sensors: </span>${product.mainFeatures.sensors}</p>
                         <!-- Other Details -->
                             <h5 class="text-success my-2">Other Details:</h5>
-                            <p class="card-text fs-6 mb-1"><span class="fw-bold">WLAN: </span>${product.others.WLAN ? product.others.WLAN : 'No'}</p>
-                            <p class="card-text fs-6 mb-1"><span class="fw-bold">Bluetooth: </span>${product.others.Bluetooth ? product.others.Bluetooth : 'No'}</p>
-                            <p class="card-text fs-6 mb-1"><span class="fw-bold">GPS: </span>${product.others.GPS ? product.others.GPS : 'No'}</p>
-                            <p class="card-text fs-6 mb-1"><span class="fw-bold">NFC: </span>${product.others.NFC ? product.others.NFC : 'No'}</p>
-                            <p class="card-text fs-6 mb-1"><span class="fw-bold">Radio: </span>${product.others.Radio ? product.others.Radio : 'No'}</p>
-                            <p class="card-text fs-6 mb-1"><span class="fw-bold">USB: </span>${product.others.USB ? product.others.USB : 'No'}</p>
+                            <p class="card-text fs-6 mb-1"><span class="fw-bold">WLAN: </span>${product.others?.WLAN ? product.others?.WLAN : 'No'}</p>
+                            <p class="card-text fs-6 mb-1"><span class="fw-bold">Bluetooth: </span>${product.others?.Bluetooth ? product.others?.Bluetooth : 'No'}</p>
+                            <p class="card-text fs-6 mb-1"><span class="fw-bold">GPS: </span>${product.others?.GPS ? product.others?.GPS : 'No'}</p>
+                            <p class="card-text fs-6 mb-1"><span class="fw-bold">NFC: </span>${product.others?.NFC ? product.others?.NFC : 'No'}</p>
+                            <p class="card-text fs-6 mb-1"><span class="fw-bold">Radio: </span>${product.others?.Radio ? product.others?.Radio : 'No'}</p>
+                            <p class="card-text fs-6 mb-1"><span class="fw-bold">USB: </span>${product.others?.USB ? product.others?.USB : 'No'}</p>
                         </div>
     </div>
     `;

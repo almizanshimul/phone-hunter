@@ -2,9 +2,11 @@
 .card {
     transition: all 0.7s;
 }
+
 .card:hover {
     box-shadow: 0 .5rem 1.1rem 0.3rem rgba(0, 0, 0, .25) !important;
 }
+
 /* Brand style  */
 .pos-rel {
     position: relative;
@@ -19,6 +21,7 @@
     padding: 7px 25px;
     border-radius: 26px;
 }
+
 /* Details Button close  */
 .details-close {
     position: absolute;
@@ -27,13 +30,18 @@
     width: 25px;
     cursor: pointer;
 }
+
 /* spinner  */
-#spinner{
+#spinner {
     display: none;
     width: 200px;
 }
 
 /* Show all Product   */
-#show-all-product{
+#show-all-product {
     display: none;
+}
+
+#btn-details>a {
+    padding: 8px 10px;
 }
